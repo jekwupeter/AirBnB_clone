@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """Defines base class for other classes"""
 import uuid
-from datetime import datetime
 import time
+from . import storage
+from datetime import datetime
 
 class BaseModel:
     """
@@ -40,7 +41,6 @@ class BaseModel:
         """
         Returns a dictionary containing all keys/values of __dict__ of instance
         """
-        self.save()
         dict_tmp = self.__dict__.copy()
         dict_tmp["updated_at"] = self.updated_at.isoformat()
         dict_tmp["created_at"] = self.created_at.isoformat()
